@@ -13,14 +13,14 @@ def jaccard_similarity(query, document):
 
     return similarity
 
-# Define the query and document
+#~~~~~~~~~! Define the query and document !~~~~~~~~~#
 query = {'hello': [1], 'world': [2]}
 document = [{'i': [0], 'love': [1], 'comput': [1], 'scinc': [1], 'and': [2], 'deep': [1], 'learn': [1], 'ai': [1]},
             {'i': [0], 'love': [1], 'comput': [1], 'scinc': [1], 'and': [2], 'deep': [1], 'learn': [1], 'ai': [1]},
             {'hello': [1], 'world': [1]}
             ]
 
-# Calculate Jaccard similarity for each document
+#~~~~~~~~~! Calculate Jaccard similarity for each document !~~~~~~~~~#
 for i, doc in enumerate(document):
     similarity = jaccard_similarity(query, doc)
     print(f"Similarity between query and document {i+1}: {similarity}")
