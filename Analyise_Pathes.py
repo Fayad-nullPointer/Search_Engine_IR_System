@@ -8,7 +8,7 @@ from nltk.tokenize import RegexpTokenizer
 import numpy as np
 # File_pathes=input("Enter PATH")
 
-# ** Read a file from data base ** #
+#~~~~~~~~~! Read a file from data base !~~~~~~~~~#
 def analyise_path(File_pathes):
     ls_pathes=[]
     with open(File_pathes,mode="r") as f:
@@ -21,11 +21,11 @@ def analyise_path(File_pathes):
     stemmed_words = [[stemmer.stem(word) for word in sentence] 
                     for sentence in words]
     
-    # ** conver 2D list to 1D list ** #
+    #~~~~~~~~~! conver 2D list to 1D list !~~~~~~~~~#
     array=np.array(stemmed_words)
     array_MD=array.reshape(array.shape[1],)
     
-    # ** link each word with it's frequancy ** #
+    #~~~~~~~~~! link each word with it's frequancy !~~~~~~~~~#
     dictionary={}
     sum=0
     for i in range(len(array_MD)):
@@ -38,7 +38,7 @@ def analyise_path(File_pathes):
         dictionary[x].append(sum)
         sum=0 
         
-    # ** Remove repeatation from dictionary ** #
+    #~~~~~~~~~! Remove repeatation from dictionary !~~~~~~~~~#
     dictionary2={}
     for i in range(len(array_MD)):
         dictionary2.setdefault(array_MD[i],list(set(dictionary[array_MD[i]])))
