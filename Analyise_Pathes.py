@@ -1,3 +1,4 @@
+# ** Tokanization to the original source ** #
 import nltk
 from nltk.tokenize import sent_tokenize, word_tokenize
 from nltk.corpus import stopwords
@@ -6,6 +7,8 @@ from nltk.tokenize import RegexpTokenizer
 # import tflearn as tf
 import numpy as np
 # File_pathes=input("Enter PATH")
+
+#~~~~~~~~~! Read a file from data base !~~~~~~~~~#
 def analyise_path(File_pathes):
     ls_pathes=[]
     with open(File_pathes,mode="r") as f:
@@ -17,8 +20,12 @@ def analyise_path(File_pathes):
     stemmer = PorterStemmer()
     stemmed_words = [[stemmer.stem(word) for word in sentence] 
                     for sentence in words]
+    
+    #~~~~~~~~~! conver 2D list to 1D list !~~~~~~~~~#
     array=np.array(stemmed_words)
     array_MD=array.reshape(array.shape[1],)
+    
+    #~~~~~~~~~! link each word with it's frequancy !~~~~~~~~~#
     dictionary={}
     sum=0
     for i in range(len(array_MD)):
@@ -30,6 +37,8 @@ def analyise_path(File_pathes):
                 sum=sum+1
         dictionary[x].append(sum)
         sum=0 
+        
+    #~~~~~~~~~! Remove repeatation from dictionary !~~~~~~~~~#
     dictionary2={}
     for i in range(len(array_MD)):
         dictionary2.setdefault(array_MD[i],list(set(dictionary[array_MD[i]])))
