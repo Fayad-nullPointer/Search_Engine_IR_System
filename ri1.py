@@ -29,12 +29,21 @@ def main():
         query = input("Enter query as string (or type 'done' to finish): ")
         if query.lower() == 'done':
             break
+        
         relevant_docs_input = input("Enter relevant documents (comma-separated) or type 'done' to skip: ")
         if relevant_docs_input.lower() == 'done':
             break
+        elif relevant_docs_input.strip() == "":
+            print("No relevant documents provided. Skipping...")
+            continue
+        
         retrieved_docs_input = input("Enter retrieved documents (comma-separated) or type 'done' to skip: ")
         if retrieved_docs_input.lower() == 'done':
             break
+        elif retrieved_docs_input.strip() == "":
+            print("No retrieved documents provided. Skipping...")
+            continue
+        
         ground_truth[query] = relevant_docs_input.split(',')
         retrieved_documents[query] = retrieved_docs_input.split(',')
 
@@ -47,6 +56,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
-
-
