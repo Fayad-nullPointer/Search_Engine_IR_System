@@ -1,3 +1,5 @@
+
+
 def query_likelihood_ranking(query, documents, smoothing=0.1):
     ranked_documents = []
     for i, doc in enumerate(documents):
